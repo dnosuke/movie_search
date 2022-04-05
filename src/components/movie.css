@@ -1,0 +1,68 @@
+body {
+    width: 100%;
+    height: 300vh;
+    margin: 0;
+  }
+
+.form {
+        
+        position: fixed;
+        width: 100%;
+        top: 0;
+        left: 0;
+        z-index: 1000;
+    
+}
+
+.navbar {
+    background: rgb(13,37,63);
+    background: linear-gradient(90deg, rgba(13,37,63,1) 0%, rgba(13,37,63,1) 12%, rgba(144,206,161,1) 100%);
+}
+
+.navbar-brand {
+    color: aliceblue;
+}
+
+.container--movie {
+    margin-top: 55px;
+}
+.movie {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0 auto;
+    max-width: 900px;
+}
+
+.row {
+    margin: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.row > div {
+    flex: 1 1 250px
+}
+
+.form-control{
+    width: 50%;
+}
+
+
+img {
+    max-width: 100%;
+    display: block;
+} 
+
+footer {
+    
+    color: aliceblue;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100vw;
+    /* ou % */
+    height: 100px;
+    background: rgb(13,37,63);
+    background: linear-gradient(90deg, rgba(13,37,63,1) 0%, rgba(13,37,63,1) 12%, rgba(144,206,161,1) 100%);
+    
+  }
