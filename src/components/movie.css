@@ -53,6 +53,7 @@ img {
     display: block;
 } 
 
+
 footer {
     
     color: aliceblue;
@@ -65,4 +66,13 @@ footer {
     background: rgb(13,37,63);
     background: linear-gradient(90deg, rgba(13,37,63,1) 0%, rgba(13,37,63,1) 12%, rgba(144,206,161,1) 100%);
     
+  }
+
+  .rodape {
+      margin-top: 30px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    flex-direction: row;
+    text-align: center;
   }
