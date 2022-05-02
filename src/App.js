@@ -1,41 +1,18 @@
 import React from 'react';
-import { useEffect, useState } from 'react';
 import { useForm } from "react-hook-form";
-import axios from 'axios';
-import ListaSearch from './components/ListaSearch';
 import './components/movie.css';
+import { useNavigate } from 'react-router';
 
 
 export default function App() {
 
-  const [movie, setValue] = useState('');
-  const [d, setData] = useState({
-    "page": 1,
-    "results": [],
-    "total_pages": 0,
-    "total_results": 0
-  });
-
+  let navigate = useNavigate();
   const { register, handleSubmit } = useForm();
   const onSubmit = (data, e) => {
     let { filme } = data;
-    setValue(filme)
+    navigate("/home", { state: { name: filme }})
   };
   const onError = (errors, e) => console.log(errors, e);
-
-  useEffect(() => {
-    const url = `https://api.themoviedb.org/3/search/movie?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&query=.` + movie;
-
-    const fetchSearch = async () => {
-      const { data } = await axios.get(url);
-
-      setData(data)
-      
-    };
-
-    fetchSearch();
-
-  }, [movie]);
 
 
   return (
@@ -43,20 +20,14 @@ export default function App() {
       <div className='form'>
         <nav className="navbar">
           <div className="container-fluid">
-            <a className="navbar-brand">Search Filmes</a>
+            <a href='/' className="navbar-brand">Search Filmes</a>
             <form className='d-flex' onSubmit={handleSubmit(onSubmit, onError)}>
               <input className="form-control me-2" type='text' {...register("filme", { required: true })} placeholder="Nome do filme" />
               <input type="submit" value="Buscar" className="btn btn-outline-success" />
             </form>
           </div>
-        </nav>
+        </nav>         
       </div>
-
-      <div>
-        <ListaSearch data={d} />
-      </div>
-
-
     </>
 
   );

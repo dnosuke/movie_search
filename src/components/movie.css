@@ -24,10 +24,10 @@ body {
 }
 
 .container--movie {
-    margin-top: 55px;
+    margin-top: 58px;
 }
 .movie {
-    display: flex;
+    
     flex-wrap: wrap;
     margin: 0 auto;
     max-width: 900px;
@@ -47,11 +47,28 @@ body {
     width: 50%;
 }
 
+.card-body {
+    display: flex;
+}
 
-img {
-    max-width: 100%;
+.align-middle {
+    max-width: 90px;
+    max-height: 140px;
+}
+
+.img-fluid img {
+    width: 115px;
     display: block;
 } 
+
+.text--area {
+    margin: 15px;
+    margin-left: 50px;
+}
+
+.text--area h6 {
+    color: gray;
+}
 
 
 footer {
@@ -68,6 +85,10 @@ footer {
     
   }
 
+.img-footer {
+      width: 100%;
+}
+
   .rodape {
       margin-top: 30px;
     display: flex;
@@ -76,3 +97,21 @@ footer {
     flex-direction: row;
     text-align: center;
   }
+
+.movie--img {
+    width: 350px;
+}
+
+.top--movie {
+    margin-top: 20vh;
+    display: flex;
+}
+
+.top--movie img {
+    width: 180%;
+    cursor: pointer;
+    transition: 0.35s all ease-in-out;
+}
+.top--movie img:hover {
+    transform: scale(1.2);
+}
