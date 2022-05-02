@@ -2,7 +2,8 @@ body {
     width: 100%;
     height: 300vh;
     margin: 0;
-  }
+    overflow: hidden;
+}
 
 .form {
         
@@ -51,6 +52,7 @@ body {
     cursor: pointer;
     opacity: 0;
     transition: all ease 0.5s;
+    color: white;
 }
 .row--left {
     left: 13px;

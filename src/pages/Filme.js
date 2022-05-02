@@ -45,8 +45,7 @@ function Filme() {
                                 </div>
                             </div>
                         </div>
-                    </div>
-                
+                    </div>                                   
             </div>
 
         </>
