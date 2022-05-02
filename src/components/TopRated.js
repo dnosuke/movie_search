@@ -24,7 +24,7 @@ function TopRated() {
     const [scrollX_2, setScrollX_2] = useState(0);
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/top_rated?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
+        const url = `https://api.themoviedb.org/3/movie/popular?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
 
         const url2 = `https://api.themoviedb.org/3/movie/upcoming?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR`;
 
