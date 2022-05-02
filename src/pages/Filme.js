@@ -2,9 +2,6 @@ import { useLocation } from "react-router-dom";
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import App from "../App";
-//https://api.themoviedb.org/3/movie/414906?api_key=13d2c66212887a5ce321622117f2180a&language=en-US
-
-const REACT_APP_TOKEN = '13d2c66212887a5ce321622117f2180a'
 
 function Filme() {
     const location = useLocation();
@@ -18,7 +15,7 @@ function Filme() {
  
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/${id}?&api_key=${REACT_APP_TOKEN}&language=pt-BR`;
+        const url = `https://api.themoviedb.org/3/movie/${id}?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR`;
 
         const fetchSearch = async () => {
             const { data } = await axios.get(url);

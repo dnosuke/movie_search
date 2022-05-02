@@ -4,8 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import './movie.css';
 
-//https://api.themoviedb.org/3/movie/top_rated?&api_key=13d2c66212887a5ce321622117f2180a&language=pt-BR&page=1
-const REACT_APP_TOKEN = '13d2c66212887a5ce321622117f2180a'
+
 function TopRated() {
 
     let navigate = useNavigate();
@@ -24,9 +23,9 @@ function TopRated() {
 
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/top_rated?&api_key=${REACT_APP_TOKEN}&language=pt-BR&page=1`;
+        const url = `https://api.themoviedb.org/3/movie/top_rated?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
 
-        const url2 = `https://api.themoviedb.org/3/movie/upcoming?&api_key=${REACT_APP_TOKEN}&language=pt-BR`;
+        const url2 = `https://api.themoviedb.org/3/movie/upcoming?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR`;
 
         const fetchSearch = async () => {
             const { data } = await axios.get(url);

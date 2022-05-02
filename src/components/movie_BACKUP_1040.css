@@ -51,6 +51,7 @@ body {
     display: flex;
 }
 
+<<<<<<< HEAD
 .align-middle {
     max-width: 90px;
     max-height: 140px;
@@ -58,8 +59,12 @@ body {
 
 .img-fluid img {
     width: 115px;
-}
-
+=======
+img {
+    width: 100%;
+>>>>>>> cb096a75456f311361e2f9513c9010c970c6c28e
+    display: block;
+} 
 
 .text--area {
     margin: 15px;

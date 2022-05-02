@@ -58,8 +58,8 @@ body {
 
 .img-fluid img {
     width: 115px;
-}
-
+    display: block;
+} 
 
 .text--area {
     margin: 15px;
