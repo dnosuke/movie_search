@@ -20,7 +20,8 @@ function TopRated() {
         "total_pages": 0,
         "total_results": 0
     });
-
+    const [scrollX, setScrollX] = useState(0);
+    const [scrollX_2, setScrollX_2] = useState(0);
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/movie/top_rated?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
@@ -45,18 +46,60 @@ function TopRated() {
 
     }, []);
 
+    const handleLeft = () => {
+        let x = scrollX + Math.round(window.innerWidth / 2);
+        if(x > 0) {
+            x = 0
+        }
+        setScrollX(x);
+    }
+    const handleRight = () => {
+        let x = scrollX - Math.round(window.innerWidth / 2);
+        let list = d.results.length * 190;
+        if((window.innerWidth - list) > x){
+            x = (window.innerWidth - list) -90;
+        }
+        setScrollX(x);
+    }
+
+    const handleLeft2 = () => {
+        let x2 = scrollX_2 + Math.round(window.innerWidth / 2);
+        if(x2 > 0) {
+            x2 = 0
+        }
+        setScrollX_2(x2);
+    }
+    const handleRight2 = () => {
+        let x2 = scrollX_2 - Math.round(window.innerWidth / 2);
+        let list = d2.results.length * 190;
+        if((window.innerWidth - list) > x2){
+            x2 = (window.innerWidth - list) -90;
+        }
+        setScrollX_2(x2);
+    }
+
 
     return (
         <>
             <App />
-            <div className="top--movie">
+            <div className="movie--tag"><h1>Top Filmes</h1></div> 
+            <div className="top--movie" style={{
+                        marginLeft: scrollX,
+                        width: d.results.length * 150
+                    }}>
 
-                <h1>Top Rated</h1>
+                    <div className="row--left" onClick={handleLeft}>
+                        left
+                    </div>
+                    <div className="row--right" onClick={handleRight}>
+                        right
+                    </div>
                 {d.results.map((item, key) =>
-                    <div key={key} className="movie">
+                    
+                    <div key={key} className="movie" >
 
 
-                        <div key={key} className="row">
+                        <div key={key} className="row" >
 
                             <div >
 
@@ -86,10 +129,18 @@ function TopRated() {
 
                 )}
             </div>
+            <div className="movie--tag"><h1>Em Breve</h1></div>                   
+            <div className="top--movie" style={{
+                        marginLeft: scrollX_2,
+                        width: d2.results.length * 150
+                    }} id="top--movie">
 
-            <div className="top--movie">
-
-                <h1>Upcoming</h1>
+            <div className="row--left" onClick={handleLeft2}>
+                        left
+                    </div>
+                    <div className="row--right" onClick={handleRight2}>
+                        right
+                    </div>
                 {d2.results.map((item, key) =>
                     <div key={key} className="movie">
 

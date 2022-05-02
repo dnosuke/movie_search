@@ -33,6 +33,37 @@ body {
     max-width: 900px;
 }
 
+.top--movie {
+    transition: all ease 0.5s;
+}
+
+.row--left, .row--right {
+    position: absolute;
+    width: 40px;
+    height: 250px;
+    background-color: rgba(0,0,0,0.6);
+    z-index: 99;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+    margin-top: 30px;
+    cursor: pointer;
+    opacity: 0;
+    transition: all ease 0.5s;
+}
+.row--left {
+    left: 13px;
+}
+.row--right {
+    right: 0;
+}
+
+.top--movie:hover .row--left,
+.top--movie:hover .row--right {
+    opacity: 1;
+}
+
 .row {
     margin: 2rem;
     display: flex;
@@ -82,6 +113,7 @@ footer {
     height: 100px;
     background: rgb(13,37,63);
     background: linear-gradient(90deg, rgba(13,37,63,1) 0%, rgba(13,37,63,1) 12%, rgba(144,206,161,1) 100%);
+    z-index: 100;
     
   }
 
@@ -102,9 +134,17 @@ footer {
     width: 350px;
 }
 
+.movie--tag {
+    margin: 60px 0px 0px 30px;
+}
+
 .top--movie {
-    margin-top: 20vh;
     display: flex;
+   margin-left: 20px;
+}
+
+div #top--movie {
+    margin-top: 5px;
 }
 
 .top--movie img {
@@ -114,4 +154,18 @@ footer {
 }
 .top--movie img:hover {
     transform: scale(1.2);
+}
+
+.top--movie h1{
+    margin: 0px 0px 0px 30px;
+}
+
+.movie-- .card.mb-3 {
+    margin-top: 5vh;
+    position: fixed;
+}
+
+.movie-- .card-body{
+    margin-top: 2vh;
+    display:grid;
 }
