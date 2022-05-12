@@ -23,21 +23,21 @@ const ListaSearch = ({ data }) => {
                                     </div>
                                     <div className="text--area">
 
-                                    <div className="card-title">
-                                        <h2>{item.title}</h2>
-                                        <h6>Ano: {item.release_date}</h6>
-                                        Nota: {item.vote_average}
-                                    </div>
+                                        <div className="card-title">
+                                            <h2>{item.title}</h2>
+                                            <h6>Ano: {item.release_date}</h6>
+                                            Nota: {item.vote_average}
+                                        </div>
 
-                                    <button className="btn btn-outline-info"
-                                        onClick={() => {
-                                            navigate("/filme", { state: { id: item.id }})
-                                        }}
-                                    >
-                                        
+                                        <button className="btn btn-outline-info"
+                                            onClick={() => {
+                                                navigate("/filme", { state: { id: item.id, title: item.title } })
+                                            }}
+                                        >
+
                                             Mais Informações
-                                         
-                                    </button>
+
+                                        </button>
                                     </div>
 
                                 </div>

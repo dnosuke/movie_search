@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import App from "../App";
 import axios from 'axios';
 import { useNavigate } from "react-router-dom";
+import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import './movie.css';
 
 
@@ -48,7 +49,7 @@ function TopRated() {
 
     const handleLeft = () => {
         let x = scrollX + Math.round(window.innerWidth / 2);
-        if(x > 0) {
+        if (x > 0) {
             x = 0
         }
         setScrollX(x);
@@ -56,15 +57,15 @@ function TopRated() {
     const handleRight = () => {
         let x = scrollX - Math.round(window.innerWidth / 2);
         let list = d.results.length * 190;
-        if((window.innerWidth - list) > x){
-            x = (window.innerWidth - list) -90;
+        if ((window.innerWidth - list) > x) {
+            x = (window.innerWidth - list) - 90;
         }
         setScrollX(x);
     }
 
     const handleLeft2 = () => {
         let x2 = scrollX_2 + Math.round(window.innerWidth / 2);
-        if(x2 > 0) {
+        if (x2 > 0) {
             x2 = 0
         }
         setScrollX_2(x2);
@@ -72,30 +73,40 @@ function TopRated() {
     const handleRight2 = () => {
         let x2 = scrollX_2 - Math.round(window.innerWidth / 2);
         let list = d2.results.length * 190;
-        if((window.innerWidth - list) > x2){
-            x2 = (window.innerWidth - list) -90;
+        if ((window.innerWidth - list) > x2) {
+            x2 = (window.innerWidth - list) - 90;
         }
         setScrollX_2(x2);
+    }
+
+    window.gapi.load('client', init);
+
+    async function init() {
+        // 2. Initialize the JavaScript client library.
+        await window.gapi.client.setApiKey(process.env.REACT_APP_GOOGLE_KEY);
+        window.gapi.client.load("https://content.googleapis.com/discovery/v1/apis/youtube/v3/rest")
+
+
     }
 
 
     return (
         <>
             <App />
-            <div className="movie--tag"><h1>Top Filmes</h1></div> 
+            <div className="movie--tag"><h1>Top Filmes</h1></div>
             <div className="top--movie" style={{
-                        marginLeft: scrollX,
-                        width: d.results.length * 150
-                    }}>
+                marginLeft: scrollX,
+                width: d.results.length * 150
+            }}>
 
-                    <div className="row--left" onClick={handleLeft}>
-                        left
-                    </div>
-                    <div className="row--right" onClick={handleRight}>
-                        right
-                    </div>
+                <div className="row--left" onClick={handleLeft}>
+                    <MdNavigateBefore />
+                </div>
+                <div className="row--right" onClick={handleRight}>
+                    <MdNavigateNext />
+                </div>
                 {d.results.map((item, key) =>
-                    
+
                     <div key={key} className="movie" >
 
 
@@ -103,15 +114,15 @@ function TopRated() {
 
                             <div >
 
-                                <a onClick={() => {
-                                    navigate("/filme", { state: { id: item.id } })
-                                }}>
 
-                                    <div className="align-middle">
-                                        <div className="img-fluid"><img src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
-                                        </div>
+
+                                <div className="align-middle">
+                                    <div className="img-fluid"><img onClick={() => {
+                                        navigate("/filme", { state: { id: item.id, title: item.title } })
+                                    }} src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
                                     </div>
-                                </a>
+                                </div>
+
                                 <div className="text--area">
 
                                     <div className="card-title">
@@ -129,18 +140,18 @@ function TopRated() {
 
                 )}
             </div>
-            <div className="movie--tag"><h1>Em Breve</h1></div>                   
+            <div className="movie--tag"><h1>Em Breve</h1></div>
             <div className="top--movie" style={{
-                        marginLeft: scrollX_2,
-                        width: d2.results.length * 150
-                    }} id="top--movie">
+                marginLeft: scrollX_2,
+                width: d2.results.length * 150
+            }} id="top--movie">
 
-            <div className="row--left" onClick={handleLeft2}>
-                        left
-                    </div>
-                    <div className="row--right" onClick={handleRight2}>
-                        right
-                    </div>
+                <div className="row--left" onClick={handleLeft2}>
+                    <MdNavigateBefore />
+                </div>
+                <div className="row--right" onClick={handleRight2}>
+                    <MdNavigateNext />
+                </div>
                 {d2.results.map((item, key) =>
                     <div key={key} className="movie">
 
