@@ -91,4 +91,23 @@ div.swiper-button-next {
     }
 }
 
+@media screen and (max-width: 400px){
+
+    h1 {
+        margin-left: 15rem;
+    }
+
+    .mySwiperDes {   
+       width: 60% ;
+       margin-top: auto;
+}
+    .mySwiper {
+        img {
+            width: 90%;
+            height: auto;
+    }
+    }
+
+}
+
 `;

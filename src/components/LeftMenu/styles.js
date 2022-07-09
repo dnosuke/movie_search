@@ -7,4 +7,8 @@ export const Container = styled.div`
     span:hover {
         color: red;
     }
+
+    @media screen and (max-width: 400px){
+       display: none;
+}
 `;

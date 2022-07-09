@@ -3,7 +3,6 @@ import { useEffect, useState } from "react";
 import axios from 'axios';
 import LeftMenu from "../../components/LeftMenu";
 import * as C from "./styles"
-import App from "../../App";
 import { useNavigate } from "react-router";
 
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -12,6 +11,7 @@ import "swiper/css/navigation";
 import "swiper/css/effect-fade";
 import { Navigation, Pagination, Autoplay} from "swiper";
 import Footer from "../../components/Footer";
+import Navbar from "../../components/Navbar";
 
 const Home2 = () => {
     let navigate = useNavigate();
@@ -28,6 +28,7 @@ const Home2 = () => {
         "total_pages": 0,
         "total_results": 0
     });
+    const [qSlides, setQSlides] = useState(4);
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/movie/popular?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
@@ -48,6 +49,15 @@ const Home2 = () => {
             setData2(data)
 
         };
+
+        const CalScreen = () => {
+            const mqLarge = window.matchMedia("(max-width: 400px)");
+            if (mqLarge.matches) {
+                setQSlides(2)
+            }
+        }
+
+        CalScreen();
         fetchSearch2();
 
     }, []);
@@ -61,42 +71,10 @@ const Home2 = () => {
         window.gapi.client.load("https://content.googleapis.com/discovery/v1/apis/youtube/v3/rest")
     }
 
-    //<img className="img-fluid rounded-start" src={`https://image.tmdb.org/t/p/w500/boIgXXUhw5O3oVkhXsE6SJZkmYo.jpg`} />
-
-    /* <div>
-                        <Swiper
-                            slidesPerView={5}
-                            spaceBetween={30}
-                            slidesPerGroup={5}
-                            loop={true}
-                            loopFillGroupWithBlank={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            navigation={true}
-                            modules={[Pagination, Navigation]}
-                            className="mySwiper"
-                        >
-                            {d2.results.map((item, key) =>
-
-
-
-                                <SwiperSlide >
-
-                                    <img onClick={() => {
-                                        navigate("/filme", { state: { id: item.id, title: item.title } })
-                                    }} src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
-
-                    
-
-                                </SwiperSlide>
-                            )}
-                        </Swiper>
-                    </div> */
     return (
 
         <>
-            <App />
+            <Navbar />
             <C.Container>
                 <LeftMenu />
 
@@ -137,7 +115,7 @@ const Home2 = () => {
                         <Swiper
                             slidesPerView={4}
                             spaceBetween={30}
-                            slidesPerGroup={4}
+                            slidesPerGroup={qSlides}
                             loop={true}
                             loopFillGroupWithBlank={true}
                             pagination={{
@@ -165,7 +143,7 @@ const Home2 = () => {
                         <Swiper
                             slidesPerView={3}
                             spaceBetween={20}
-                            slidesPerGroup={3}
+                            slidesPerGroup={qSlides - 1}
                             loop={true}
                             loopFillGroupWithBlank={true}
                             pagination={{

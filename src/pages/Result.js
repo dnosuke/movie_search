@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { useLocation } from "react-router";
 import axios from 'axios';
 import ListaSearch from "../components/ListaSearch";
-import App from "../App";
+import Navbar from "../components/Navbar";
 
 
 function Result() {
@@ -34,7 +34,7 @@ function Result() {
     return (
 
         <div>
-          <App />
+          <Navbar />
             <div>
         <ListaSearch data={d} />
       </div>

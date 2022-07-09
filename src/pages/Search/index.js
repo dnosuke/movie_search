@@ -1,11 +1,11 @@
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router";
-import App from "../../App";
 import Footer from "../../components/Footer";
 import LeftMenu from "../../components/LeftMenu";
 import ListaSearch from "../../components/ListaSearch";
 import * as C from "./styles"
+import Navbar from "../../components/Navbar";
 
 const Search = () => {
 
@@ -35,7 +35,7 @@ const Search = () => {
 
     return (
         <>
-            <App />
+            <Navbar />
             <C.Container>
                 <LeftMenu />
                 <ListaSearch data={d} />

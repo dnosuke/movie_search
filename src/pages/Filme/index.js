@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as C from "./styles"
 import Footer from "../../components/Footer";
 import LeftMenu from "../../components/LeftMenu";
-import App from "../../App";
+import Navbar from "../../components/Navbar";
 
 const Filme2 = () => {
     const location = useLocation();
@@ -65,7 +65,7 @@ const Filme2 = () => {
     return (
 
         <>
-            <App />
+            <Navbar />
             <C.Container>
                 <LeftMenu />
 
