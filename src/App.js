@@ -10,7 +10,7 @@ export default function App() {
   const { register, handleSubmit } = useForm();
   const onSubmit = (data, e) => {
     let { filme } = data;
-    navigate("/home", { state: { name: filme }})
+    navigate("/search", { state: { name: filme }})
   };
   const onError = (errors, e) => console.log(errors, e);
 

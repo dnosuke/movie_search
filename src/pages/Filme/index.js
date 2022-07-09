@@ -1,10 +1,12 @@
 import { useLocation } from "react-router-dom";
-import { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import App from "../App";
-import Video from "./Video";
+import * as C from "./styles"
+import Footer from "../../components/Footer";
+import LeftMenu from "../../components/LeftMenu";
+import App from "../../App";
 
-function Filme() {
+const Filme2 = () => {
     const location = useLocation();
     const id = location.state.id
     const name = location.state.title + " trailer"
@@ -64,26 +66,21 @@ function Filme() {
 
         <>
             <App />
-            <div className="movie--" >
-                <div className="card mb-3" >
-                    <div className="row g-0">
-                        <div className="col-md-4">
-                            <img className="img-fluid rounded-start" src={`https://image.tmdb.org/t/p/w500${d.poster_path}`} alt={d.original_title} />
-                        </div>
-                        <div className="col-md-8">
-                            <div className="card-body">
-                                <h5 className="card-title">{d.title}</h5>
-                                <p className="card-text">{d.overview}</p>
-                                <Video link={link} />
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            <C.Container>
+                <LeftMenu />
 
+                <div className="content">
+                <img src={`https://image.tmdb.org/t/p/w1280${d.backdrop_path}`} alt={d.original_title} />
+                <h5 className="card-title">{d.title}</h5>
+                <p className="card-text">{d.overview}</p>
+                </div>
+
+                <LeftMenu />
+            </C.Container>
+            <Footer />
         </>
 
     )
 }
 
-export default Filme;
+export default Filme2;

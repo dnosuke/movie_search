@@ -4,6 +4,7 @@ import axios from 'axios';
 import { useNavigate } from "react-router-dom";
 import { MdNavigateBefore, MdNavigateNext } from 'react-icons/md';
 import './movie.css';
+import LeftMenu from "./LeftMenu";
 
 
 function TopRated() {
@@ -93,6 +94,7 @@ function TopRated() {
     return (
         <>
             <App />
+            <LeftMenu />
             <div className="movie--tag"><h1>Top Filmes</h1></div>
             <div className="top--movie" style={{
                 marginLeft: scrollX,
@@ -121,6 +123,7 @@ function TopRated() {
                                         navigate("/filme", { state: { id: item.id, title: item.title } })
                                     }} src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
                                     </div>
+                                    {console.log(`https://image.tmdb.org/t/p/w500${item.poster_path}`)}
                                 </div>
 
                                 <div className="text--area">
