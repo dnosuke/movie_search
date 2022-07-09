@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     
     h1 {
@@ -9,11 +10,15 @@ export const Container = styled.div`
         margin-bottom: 1rem;
 }
     img {
-        width: 200px;
-        height: 300px;
+        width: 180px;
+        height: auto;
         border-radius: 10px;
     }
 
+    .content {
+        display: flex;
+        justify-content: center;
+    }
 `;
 
 export const Filmes = styled.div`
@@ -22,7 +27,7 @@ export const Filmes = styled.div`
     margin: 1rem;
 
     div {
-        width: 90vh;
+        width: 800px;
     }
 
     div.swiper-button-prev {
@@ -97,16 +102,35 @@ div.swiper-button-next {
         margin-left: 15rem;
     }
 
+    div {
+        width: 400px;
+    }
+
     .mySwiperDes {   
-       width: 60% ;
+       width: 100% ;
        margin-top: auto;
+       padding-left: 3rem;
 }
     .mySwiper {
+
+        width: 400px;
+
+        div.swiper-button-next:after, div.swiper-button-prev:after, div.swiper-button-prev, div.swiper-button-next { 
+            display: none;
+         }
+
         img {
-            width: 90%;
+            width: 100%;
             height: auto;
     }
     }
+
+    .SwiperPopular {
+       img {
+            width: 100px;
+            height: auto;
+    }
+}
 
 }
 

@@ -9,7 +9,7 @@ import { Swiper, SwiperSlide } from 'swiper/react';
 import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/effect-fade";
-import { Navigation, Pagination, Autoplay} from "swiper";
+import { Navigation, Pagination, Autoplay } from "swiper";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
 
@@ -73,109 +73,109 @@ const Home2 = () => {
 
     return (
 
-        <>
-            <Navbar />
-            <C.Container>
+        <C.Container>
+                <Navbar />
+                <div className="content">
                 <LeftMenu />
 
                 <C.Filmes>
 
-                
-                <Swiper
-                            centeredSlides={true}
-                            spaceBetween={10}
-                            effect={"fade"}
-                            pagination={{
-                              clickable: true,
-                            }}
-                            autoplay={{
-                                delay: 2500,
-                                disableOnInteraction: false,
-                              }}
-                            modules={[Autoplay, Pagination]}
-                            className="mySwiperDes"
-                        >
-                            {d.results.map((item, key) =>
+
+                    <Swiper
+                        centeredSlides={true}
+                        spaceBetween={10}
+                        effect={"fade"}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        autoplay={{
+                            delay: 2500,
+                            disableOnInteraction: false,
+                        }}
+                        modules={[Autoplay, Pagination]}
+                        className="mySwiperDes"
+                    >
+                        {d.results.map((item, key) =>
 
 
 
-                                <SwiperSlide key={key}>
+                            <SwiperSlide key={key}>
 
-                                    <img onClick={() => {
-                                        navigate("/filme", { state: { id: item.id, title: item.title } })
-                                    }} src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`} alt={item.original_title} />
-
-                                    
-
-                                </SwiperSlide>
-                            )}
-                        </Swiper>
-
-                        <h1>Top Rated</h1>
-                        <Swiper
-                            slidesPerView={4}
-                            spaceBetween={30}
-                            slidesPerGroup={qSlides}
-                            loop={true}
-                            loopFillGroupWithBlank={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            navigation={true}
-                            modules={[Pagination, Navigation]}
-                            className="mySwiper"
-                        >
-                            {d.results.map((item, key) =>
+                                <img onClick={() => {
+                                    navigate("/filme", { state: { id: item.id, title: item.title } })
+                                }} src={`https://image.tmdb.org/t/p/w780${item.backdrop_path}`} alt={item.original_title} />
 
 
 
-                                <SwiperSlide key={key}>
+                            </SwiperSlide>
+                        )}
+                    </Swiper>
 
-                                    <img onClick={() => {
-                                        navigate("/filme", { state: { id: item.id, title: item.title } })
-                                    }} src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
-
-                                </SwiperSlide>
-                            )}
-                        </Swiper>
-
-                        <h1>Popular</h1>
-                        <Swiper
-                            slidesPerView={3}
-                            spaceBetween={20}
-                            slidesPerGroup={qSlides - 1}
-                            loop={true}
-                            loopFillGroupWithBlank={true}
-                            pagination={{
-                                clickable: true,
-                            }}
-                            navigation={true}
-                            modules={[Pagination, Navigation]}
-                            className="SwiperPopular"
-                        >
-                            {d2.results.map((item, key) =>
+                    <h1>Top Rated</h1>
+                    <Swiper
+                        slidesPerView={4}
+                        spaceBetween={10}
+                        slidesPerGroup={qSlides}
+                        loop={true}
+                        loopFillGroupWithBlank={true}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        navigation={true}
+                        modules={[Pagination, Navigation]}
+                        className="mySwiper"
+                    >
+                        {d.results.map((item, key) =>
 
 
 
-                                <SwiperSlide >
+                            <SwiperSlide key={key}>
 
-                                    <img onClick={() => {
-                                        navigate("/filme", { state: { id: item.id, title: item.title } })
-                                    }} src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`} alt={item.original_title} />
+                                <img onClick={() => {
+                                    navigate("/filme", { state: { id: item.id, title: item.title } })
+                                }} src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
 
-                    
+                            </SwiperSlide>
+                        )}
+                    </Swiper>
 
-                                </SwiperSlide>
-                            )}
-                        </Swiper>
-                   
+                    <h1>Popular</h1>
+                    <Swiper
+                        slidesPerView={3}
+                        spaceBetween={20}
+                        slidesPerGroup={qSlides - 1}
+                        loop={true}
+                        loopFillGroupWithBlank={true}
+                        pagination={{
+                            clickable: true,
+                        }}
+                        navigation={true}
+                        modules={[Pagination, Navigation]}
+                        className="SwiperPopular"
+                    >
+                        {d2.results.map((item, key) =>
+
+
+
+                            <SwiperSlide >
+
+                                <img onClick={() => {
+                                    navigate("/filme", { state: { id: item.id, title: item.title } })
+                                }} src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`} alt={item.original_title} />
+
+
+
+                            </SwiperSlide>
+                        )}
+                    </Swiper>
+
                 </C.Filmes>
 
 
                 <LeftMenu />
+        </div>
+                <Footer />
             </C.Container>
-            <Footer />
-        </>
     )
 }
 
