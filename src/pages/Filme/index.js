@@ -5,6 +5,7 @@ import * as C from "./styles"
 import Footer from "../../components/Footer";
 import LeftMenu from "../../components/LeftMenu";
 import Navbar from "../../components/Navbar";
+import Video from "../../components/Video";
 
 const Filme2 = () => {
     const location = useLocation();
@@ -77,6 +78,7 @@ const Filme2 = () => {
                 <p className="card-text">{d.budget}</p>
                 <p className="card-text">{d.release_date}</p>
                 <p className="card-text">{d.overview}</p>
+                <Video link={link}/>
                 </div>
 
                 <LeftMenu />

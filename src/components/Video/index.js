@@ -1,14 +1,17 @@
-function Video({ link }) {
+import React from "react";
+import * as C from "./styles";
+
+const Video= ({ link }) => {
 
     return (
 
 
 
-        <div>
+        <C.Container>
             {link && (
                 <iframe width="560" height="315" src={link} title="YouTube video player" frameBorder="0" ></iframe>)
             }
-        </div>
+        </C.Container>
 
 
     )
