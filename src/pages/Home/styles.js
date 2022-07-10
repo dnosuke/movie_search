@@ -99,7 +99,7 @@ div.swiper-button-next {
 @media screen and (max-width: 400px){
 
     h1 {
-        margin-left: 15rem;
+        margin-left: 3rem;
     }
 
     div {
@@ -113,7 +113,7 @@ div.swiper-button-next {
 }
     .mySwiper {
 
-        width: 400px;
+        width: 393px;
 
         div.swiper-button-next:after, div.swiper-button-prev:after, div.swiper-button-prev, div.swiper-button-next { 
             display: none;
