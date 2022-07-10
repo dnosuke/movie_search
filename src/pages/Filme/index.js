@@ -71,14 +71,20 @@ const Filme2 = () => {
                 <LeftMenu />
 
                 <div className="content">
-                <img src={`https://image.tmdb.org/t/p/w1280${d.backdrop_path}`} alt={d.original_title} />
-                <h5 className="card-title">{d.title}</h5>
-                <i class="uil uil-star"></i>
-                <p className="card-text">{d.vote_average}</p>
-                <p className="card-text">{d.budget}</p>
-                <p className="card-text">{d.release_date}</p>
-                <p className="card-text">{d.overview}</p>
-                <Video link={link}/>
+                    <img src={`https://image.tmdb.org/t/p/w1280${d.backdrop_path}`} alt={d.original_title} />
+                    <div className="degrade"></div>
+                    <h1 className="card-title">{d.title}</h1>
+                    <div className="details">
+                    <p >{d.budget}</p>
+                    <p >{d.release_date}</p>
+
+                    <div className="evaluation">
+                        <i class="uil uil-star"></i>
+                        <p >{d.vote_average}</p>
+                    </div>
+                    </div>
+                    <p >{d.overview}</p>
+                    <Video link={link} />
                 </div>
 
                 <LeftMenu />
