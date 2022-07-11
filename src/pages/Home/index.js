@@ -12,6 +12,7 @@ import "swiper/css/effect-fade";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import RightMenu from "../../components/RightMenu";
 
 const Home2 = () => {
     let navigate = useNavigate();
@@ -28,12 +29,21 @@ const Home2 = () => {
         "total_pages": 0,
         "total_results": 0
     });
+
+    const [topRated, setTopRated] = useState({
+        "page": 1,
+        "results": [],
+        "total_pages": 0,
+        "total_results": 0
+    });
     const [qSlides, setQSlides] = useState(4);
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/movie/popular?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
 
         const url2 = `https://api.themoviedb.org/3/movie/upcoming?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR`;
+
+        const url3 = `https://api.themoviedb.org/3/movie/top_rated?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
 
         const fetchSearch = async () => {
             const { data } = await axios.get(url);
@@ -50,6 +60,13 @@ const Home2 = () => {
 
         };
 
+        const fetchSearch3 = async () => {
+            const { data } = await axios.get(url3);
+
+            setTopRated(data)
+
+        };
+
         const CalScreen = () => {
             const mqLarge = window.matchMedia("(max-width: 400px)");
             if (mqLarge.matches) {
@@ -59,6 +76,7 @@ const Home2 = () => {
 
         CalScreen();
         fetchSearch2();
+        fetchSearch3();
 
     }, []);
 
@@ -74,8 +92,8 @@ const Home2 = () => {
     return (
 
         <C.Container>
-                <Navbar />
-                <div className="content">
+            <Navbar />
+            <div className="content">
                 <LeftMenu />
 
                 <C.Filmes>
@@ -111,7 +129,7 @@ const Home2 = () => {
                         )}
                     </Swiper>
 
-                    <h1>Top Rated</h1>
+                    <h1>Popular</h1>
                     <Swiper
                         slidesPerView={4}
                         spaceBetween={10}
@@ -139,7 +157,7 @@ const Home2 = () => {
                         )}
                     </Swiper>
 
-                    <h1>Popular</h1>
+                    <h1>Upcoming</h1>
                     <Swiper
                         slidesPerView={3}
                         spaceBetween={20}
@@ -157,7 +175,7 @@ const Home2 = () => {
 
 
 
-                            <SwiperSlide >
+                            <SwiperSlide key={key}>
 
                                 <img onClick={() => {
                                     navigate("/filme", { state: { id: item.id, title: item.title } })
@@ -183,7 +201,7 @@ const Home2 = () => {
                         modules={[Pagination, Navigation]}
                         className="mySwiper"
                     >
-                        {d.results.map((item, key) =>
+                        {topRated.results.map((item, key) =>
 
 
 
@@ -197,7 +215,7 @@ const Home2 = () => {
                         )}
                     </Swiper>
 
-                    <h1>Popular</h1>
+                    <h1>Upcoming</h1>
                     <Swiper
                         slidesPerView={3}
                         spaceBetween={20}
@@ -215,7 +233,7 @@ const Home2 = () => {
 
 
 
-                            <SwiperSlide >
+                            <SwiperSlide key={key}>
 
                                 <img onClick={() => {
                                     navigate("/filme", { state: { id: item.id, title: item.title } })
@@ -229,13 +247,10 @@ const Home2 = () => {
 
                 </C.Filmes>
 
-                
-
-
-                <LeftMenu />
-        </div>
-                <Footer />
-            </C.Container>
+                <RightMenu data={topRated} />
+            </div>
+            <Footer />
+        </C.Container>
     )
 }
 
