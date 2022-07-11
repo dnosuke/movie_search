@@ -36,14 +36,22 @@ const Home2 = () => {
         "total_pages": 0,
         "total_results": 0
     });
+    const [popular, setPopular] = useState({
+        "page": 1,
+        "results": [],
+        "total_pages": 0,
+        "total_results": 0
+    });
     const [qSlides, setQSlides] = useState(4);
 
     useEffect(() => {
-        const url = `https://api.themoviedb.org/3/movie/popular?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
+        const url = `https://api.themoviedb.org/3/movie/now_playing?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
 
         const url2 = `https://api.themoviedb.org/3/movie/upcoming?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR`;
 
         const url3 = `https://api.themoviedb.org/3/movie/top_rated?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
+
+        const url4 = `https://api.themoviedb.org/3/movie/popular?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
 
         const fetchSearch = async () => {
             const { data } = await axios.get(url);
@@ -66,6 +74,12 @@ const Home2 = () => {
             setTopRated(data)
 
         };
+        const fetchSearch4 = async () => {
+            const { data } = await axios.get(url4);
+
+            setPopular(data)
+
+        };
 
         const CalScreen = () => {
             const mqLarge = window.matchMedia("(max-width: 400px)");
@@ -77,6 +91,7 @@ const Home2 = () => {
         CalScreen();
         fetchSearch2();
         fetchSearch3();
+        fetchSearch4();
 
     }, []);
 
@@ -129,7 +144,7 @@ const Home2 = () => {
                         )}
                     </Swiper>
 
-                    <h1>Popular</h1>
+                    <h1>Now Playing</h1>
                     <Swiper
                         slidesPerView={4}
                         spaceBetween={10}
@@ -187,7 +202,7 @@ const Home2 = () => {
                         )}
                     </Swiper>
 
-                    <h1>Top Rated</h1>
+                    <h1>Popular</h1>
                     <Swiper
                         slidesPerView={4}
                         spaceBetween={10}
@@ -201,7 +216,7 @@ const Home2 = () => {
                         modules={[Pagination, Navigation]}
                         className="mySwiper"
                     >
-                        {topRated.results.map((item, key) =>
+                        {popular.results.map((item, key) =>
 
 
 
@@ -215,39 +230,9 @@ const Home2 = () => {
                         )}
                     </Swiper>
 
-                    <h1>Upcoming</h1>
-                    <Swiper
-                        slidesPerView={3}
-                        spaceBetween={20}
-                        slidesPerGroup={qSlides - 1}
-                        loop={true}
-                        loopFillGroupWithBlank={true}
-                        pagination={{
-                            clickable: true,
-                        }}
-                        navigation={true}
-                        modules={[Pagination, Navigation]}
-                        className="SwiperPopular"
-                    >
-                        {d2.results.map((item, key) =>
-
-
-
-                            <SwiperSlide key={key}>
-
-                                <img onClick={() => {
-                                    navigate("/filme", { state: { id: item.id, title: item.title } })
-                                }} src={`https://image.tmdb.org/t/p/w500${item.backdrop_path}`} alt={item.original_title} />
-
-
-
-                            </SwiperSlide>
-                        )}
-                    </Swiper>
-
                 </C.Filmes>
 
-                <RightMenu data={topRated} />
+                <RightMenu data={topRated} title={'Top Rated'} />
             </div>
             <Footer />
         </C.Container>

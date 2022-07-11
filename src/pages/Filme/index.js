@@ -6,6 +6,7 @@ import Footer from "../../components/Footer";
 import LeftMenu from "../../components/LeftMenu";
 import Navbar from "../../components/Navbar";
 import Video from "../../components/Video";
+import RightMenu from "../../components/RightMenu";
 
 const Filme2 = () => {
     const location = useLocation();
@@ -19,21 +20,34 @@ const Filme2 = () => {
         "total_pages": 0,
         "total_results": 0
     });
+    const [similar, setSimilar] = useState({
+        "page": 1,
+        "results": [],
+        "total_pages": 0,
+        "total_results": 0
+    });
 
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/movie/${id}?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR`;
 
+        const url2 = `https://api.themoviedb.org/3/movie/${id}/similar?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
+
         const fetchSearch = async () => {
             const { data } = await axios.get(url);
 
             setData(data)
+        };
+        const fetchSearch2 = async () => {
+            const { data } = await axios.get(url2);
 
+            setSimilar(data)
         };
 
 
 
         fetchSearch();
+        fetchSearch2();
         start();
 
     }, []);
@@ -84,10 +98,10 @@ const Filme2 = () => {
                     </div>
                     </div>
                     <p >{d.overview}</p>
-                    <Video link={link} />
+                    
                 </div>
 
-                <LeftMenu />
+                <RightMenu data={similar} title={'Similar'}/>
             </C.Container>
             <Footer />
         </>
