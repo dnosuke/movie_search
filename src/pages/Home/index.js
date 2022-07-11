@@ -231,8 +231,10 @@ const Home2 = () => {
                     </Swiper>
 
                 </C.Filmes>
-
+                
+                <C.RightMenu>
                 <RightMenu data={topRated} title={'Top Rated'} />
+                </C.RightMenu>
             </div>
             <Footer />
         </C.Container>

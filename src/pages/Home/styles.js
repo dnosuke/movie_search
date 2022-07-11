@@ -135,3 +135,13 @@ div.swiper-button-next {
 }
 
 `;
+
+export const RightMenu = styled.div`
+    margin-top: 1rem;
+.content {
+    justify-content: flex-start;
+}    
+    img {
+        width: 90px;
+    }
+`;
