@@ -88,20 +88,20 @@ const Filme2 = () => {
                     <img src={`https://image.tmdb.org/t/p/w1280${d.backdrop_path}`} alt={d.original_title} />
                     <div className="degrade"></div>
                     <h1 className="card-title">{d.title}</h1>
-                    <div className="details">
-                    <p >{d.budget}</p>
-                    <p >{d.release_date}</p>
 
-                    <div className="evaluation">
-                        <i class="uil uil-star"></i>
-                        <p >{d.vote_average}</p>
-                    </div>
+                    <div className="details">
+                        <p className="date">RELEASE {d.release_date}</p>
+
+                        <div className="evaluation">
+                            <i class="uil uil-star"></i>
+                            <p >{d.vote_average}</p>
+                        </div>
                     </div>
                     <p >{d.overview}</p>
-                    
+                    <Video link={link} />
                 </div>
 
-                <RightMenu data={similar} title={'Similar'}/>
+                <RightMenu data={similar} title={'Similar'} />
             </C.Container>
             <Footer />
         </>

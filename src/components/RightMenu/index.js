@@ -5,10 +5,7 @@ import * as C from "./styles"
 const RightMenu = ({ data, title }) => {
 
     let navigate = useNavigate();
-    
-    useEffect(() => {
-        
-    }, [])
+
     
     const handleStar = (item) => {
         let star = []
@@ -24,10 +21,10 @@ const RightMenu = ({ data, title }) => {
             <h1>{title}</h1>
             {data.results.map((item, key) => {
                 if (key < 5)
-                return (<div className="content" key={key}>
-                        <img onClick={() => {
-                            navigate("/filme", { state: { id: item.id, title: item.title } })
-                        }} src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
+                return (<div className="content" key={key} onClick={() => {
+                    navigate("filme", { state: { id: item.id, title: item.title } })
+                }}>
+                        <img  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
                         <div className="des">
                             <h2>{item.title}</h2>
                         {handleStar(parseInt(item.vote_average))}

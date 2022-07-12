@@ -13,6 +13,7 @@ export const Container = styled.div`
     }
 
     h1 {
+        font-size: 25px;
         text-transform: uppercase;
         letter-spacing: 2px;
         
@@ -46,8 +47,13 @@ export const Container = styled.div`
     .details {
         width: 800px;
         display: flex;
-        justify-content: space-between;
+        justify-content: center;
         
+        .date {
+            align-self: center;
+            text-align: end;
+            font-size: 14px;
+        }
     }
 
     .evaluation {
