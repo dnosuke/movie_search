@@ -2,7 +2,6 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 import * as C from "./styles"
 import 'react-loading-skeleton/dist/skeleton.css'
-import CardSkeleton from "../MovieSearchCardSkeleton";
 
 const ListaSearch = ({ data }) => {
     let navigate = useNavigate();

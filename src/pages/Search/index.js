@@ -12,7 +12,7 @@ const Search = () => {
     const location = useLocation();
     const name = location.state.name
     const [isLoading, setIsLoading] = useState(true);
-    const [d, setData] = useState({
+    const [dataMovie, setDataMovie] = useState({
         "page": 1,
         "results": [],
         "total_pages": 0,
@@ -25,21 +25,23 @@ const Search = () => {
         const fetchSearch = async () => {
           const { data } = await axios.get(url);
     
-          setData(data);
+          setDataMovie(data);
           setIsLoading(false);
         };
     
         fetchSearch();
     
-      }, [d]);
+      }, [dataMovie, name]);
 
     return (
         <>
             <Navbar />
             <C.Container>
                 {!isLoading? 
-                <ListaSearch data={d} />:
-                <CardSkeleton cards={d.results.length} />
+                <ListaSearch data={dataMovie} />:
+                <div className="cardSkeleton">
+                <CardSkeleton cards={8} />
+                </div>
                 }
             </C.Container>
             <Footer />
