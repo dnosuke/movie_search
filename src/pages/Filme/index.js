@@ -3,10 +3,9 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import * as C from "./styles"
 import Footer from "../../components/Footer";
-import LeftMenu from "../../components/LeftMenu";
 import Navbar from "../../components/Navbar";
 import Video from "../../components/Video";
-import RightMenu from "../../components/RightMenu";
+import SimilarMovie from "../../components/SimilarMovie";
 
 const Filme2 = () => {
     const location = useLocation();
@@ -106,7 +105,7 @@ const Filme2 = () => {
                     <Video link={link} />
                 </div>
 
-                <RightMenu data={similar} title={'Similar'} />
+                <SimilarMovie data={similar} title={'Similar'} />
             </C.Container>
             <Footer />
         </>

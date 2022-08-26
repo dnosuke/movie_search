@@ -1,7 +1,6 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import LeftMenu from "../../components/LeftMenu";
 import * as C from "./styles"
 import { useNavigate } from "react-router";
 
@@ -12,7 +11,6 @@ import "swiper/css/effect-fade";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
-import RightMenu from "../../components/RightMenu";
 
 const Home2 = () => {
     let navigate = useNavigate();

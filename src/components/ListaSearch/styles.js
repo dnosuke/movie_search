@@ -1,23 +1,35 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    width: 40%;
+    display: grid;
+    grid-template-columns: 16rem 16rem 16rem 16rem;
+    padding: 10px;
+    column-gap: 1rem;
+    row-gap: 20px;
 
     
-    .content {
-        margin: .5rem;
-        display: flex;
-        width: 90%;
-        border-style: solid;
+    .card {
+        background-color: rgb(25,28,29);
+        border: 1px solid rgba(0, 0, 0, 0.8);
+        padding: 10px;
+        font-size: 20px;
+        text-align: center;
 
         img {
-            margin-right: 5rem;
-            width: 20%;
             height: auto;
+        }
+
+        div {
+            text-align: justify;
         }
     }
 
+    .card:hover {
+        cursor: pointer;
+    }
+
+    @media screen and (max-width: 400px){
+        grid-template-columns: 10rem 10rem ;
+        
+    }
 `;

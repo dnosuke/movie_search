@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import * as C from "./styles"
 
-const RightMenu = ({ data }) => {
+const SimilarMovie = ({ data }) => {
 
     let navigate = useNavigate();
 
@@ -27,4 +27,4 @@ const RightMenu = ({ data }) => {
     )
 }
 
-export default RightMenu;
+export default SimilarMovie;
