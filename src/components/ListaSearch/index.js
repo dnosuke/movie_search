@@ -4,13 +4,12 @@ import * as C from "./styles"
 import 'react-loading-skeleton/dist/skeleton.css'
 import CardSkeleton from "../MovieSearchCardSkeleton";
 
-const ListaSearch = ({ data, isLoading }) => {
+const ListaSearch = ({ data }) => {
     let navigate = useNavigate();
     return (
         
         <C.Container>
-                {!isLoading ? 
-                (data.results.map((item, key) =>
+                {data.results.map((item, key) =>
 
 
                     <div class="card" key={key}
@@ -25,9 +24,7 @@ const ListaSearch = ({ data, isLoading }) => {
                     </div>
                     </div>
 
-                ))
-                : <CardSkeleton cards={data.results.length} />
-                }
+                )}
         </C.Container>
 
     )

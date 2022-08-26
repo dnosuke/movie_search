@@ -5,6 +5,7 @@ import Footer from "../../components/Footer";
 import ListaSearch from "../../components/ListaSearch";
 import * as C from "./styles"
 import Navbar from "../../components/Navbar";
+import CardSkeleton from "../../components/MovieSearchCardSkeleton";
 
 const Search = () => {
 
@@ -36,7 +37,10 @@ const Search = () => {
         <>
             <Navbar />
             <C.Container>
-                <ListaSearch data={d} isLoading={isLoading}/>
+                {!isLoading? 
+                <ListaSearch data={d} />:
+                <CardSkeleton cards={d.results.length} />
+                }
             </C.Container>
             <Footer />
         </>
