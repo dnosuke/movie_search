@@ -42,6 +42,7 @@ const Home2 = () => {
         "total_results": 0
     });
     const [qSlides, setQSlides] = useState(4);
+    const [isLoading, setIsLoading] = useState(true);
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/movie/now_playing?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR&page=1`;
@@ -76,7 +77,8 @@ const Home2 = () => {
         const fetchSearch4 = async () => {
             const { data } = await axios.get(url4);
 
-            setPopular(data)
+            setPopular(data);
+            setIsLoading(false);
 
         };
 
@@ -105,7 +107,7 @@ const Home2 = () => {
 
     return (
 <>
-        {d? (<C.Container>
+        {!isLoading? (<C.Container>
             <Navbar />
             <div className="content">
 
