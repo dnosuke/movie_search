@@ -10,7 +10,7 @@ const Search = () => {
 
     const location = useLocation();
     const name = location.state.name
-    
+    const [isLoading, setIsLoading] = useState(true);
     const [d, setData] = useState({
         "page": 1,
         "results": [],
@@ -24,8 +24,8 @@ const Search = () => {
         const fetchSearch = async () => {
           const { data } = await axios.get(url);
     
-          setData(data)
-          
+          setData(data);
+          setIsLoading(false);
         };
     
         fetchSearch();
@@ -36,7 +36,7 @@ const Search = () => {
         <>
             <Navbar />
             <C.Container>
-                <ListaSearch data={d} />
+                <ListaSearch data={d} isLoading={isLoading}/>
             </C.Container>
             <Footer />
         </>

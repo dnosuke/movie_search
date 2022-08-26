@@ -11,6 +11,7 @@ import "swiper/css/effect-fade";
 import { Navigation, Pagination, Autoplay } from "swiper";
 import Footer from "../../components/Footer";
 import Navbar from "../../components/Navbar";
+import CardSkeleton from "../../components/MovieSearchCardSkeleton";
 
 const Home2 = () => {
     let navigate = useNavigate();
@@ -103,8 +104,8 @@ const Home2 = () => {
     }
 
     return (
-
-        <C.Container>
+<>
+        {d? (<C.Container>
             <Navbar />
             <div className="content">
 
@@ -233,7 +234,10 @@ const Home2 = () => {
                 </C.RightMenu>
             </div>
             <Footer />
-        </C.Container>
+        </C.Container>): 
+        <CardSkeleton cards={5} />
+        }
+        </>
     )
 }
 
