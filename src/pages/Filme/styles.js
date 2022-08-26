@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Container = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     margin-top: .1rem;
 
@@ -19,7 +20,11 @@ export const Container = styled.div`
         
     }
 
-    .card-title {    
+    .card-title {  
+        display: flex;
+        width: 60vw;
+        justify-content: space-between;
+        align-items: center;
         margin-top: -1rem;
         z-index: 2222;
     }
@@ -51,8 +56,9 @@ export const Container = styled.div`
         
         .date {
             align-self: center;
-            text-align: end;
             font-size: 14px;
+            margin-top: 2rem;
+            margin-bottom: 2rem;
         }
     }
 
@@ -102,17 +108,26 @@ export const Container = styled.div`
     }
 
     .evaluation {
-
+        width: 20vw;
+        height: 10vh;
+        i {
+            font-size: 20px;
+        }
         p {
 
             margin-left: .5rem;
             margin-right: 3rem;
-            font-size: 30px;
+            font-size: 20px;
         }
     }
 
-        h1 {    
-        margin: 1rem;
+    .card-title {
+        width: 100vw;
+    }
+
+        h1 {  
+        font-size: 16px;
+        margin-left: 1rem;
     }
 
     p {

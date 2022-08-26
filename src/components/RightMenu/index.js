@@ -2,23 +2,14 @@ import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import * as C from "./styles"
 
-const RightMenu = ({ data, title }) => {
+const RightMenu = ({ data }) => {
 
     let navigate = useNavigate();
 
-    
-    const handleStar = (item) => {
-        let star = []
-        for (let i=0; i<item; i++)
-            star.push(<i class="uil uil-favorite"></i>)
-        return star.map((a) => 
-            a
-        )         
-    }
-
     return (
         <C.Container>
-            <h1>{title}</h1>
+            <h1>RECOMENDAÇÕES</h1>
+            <div className="similar">
             {data.results.map((item, key) => {
                 if (key < 5)
                 return (<div className="content" key={key} onClick={() => {
@@ -27,11 +18,11 @@ const RightMenu = ({ data, title }) => {
                         <img  src={`https://image.tmdb.org/t/p/w500${item.poster_path}`} alt={item.original_title} />
                         <div className="des">
                             <h2>{item.title}</h2>
-                        {handleStar(parseInt(item.vote_average))}
                         </div>
                     </div>)
             }
             )}
+            </div>
         </C.Container>
     )
 }

@@ -26,7 +26,7 @@ const Filme2 = () => {
         "total_pages": 0,
         "total_results": 0
     });
-
+    console.log(d);
 
     useEffect(() => {
         const url = `https://api.themoviedb.org/3/movie/${id}?&api_key=${process.env.REACT_APP_TOKEN}&language=pt-BR`;
@@ -82,20 +82,25 @@ const Filme2 = () => {
         <>
             <Navbar />
             <C.Container>
-                <LeftMenu />
 
+                        
                 <div className="content">
                     <img src={`https://image.tmdb.org/t/p/w1280${d.backdrop_path}`} alt={d.original_title} />
                     <div className="degrade"></div>
-                    <h1 className="card-title">{d.title}</h1>
-
-                    <div className="details">
-                        <p className="date">RELEASE {d.release_date}</p>
-
+                    <div className="card-title">
+                        <h1>{d.title}</h1>
                         <div className="evaluation">
                             <i class="uil uil-star"></i>
-                            <p >{d.vote_average}</p>
+                            <p >{parseFloat(d.vote_average).toFixed(1)}</p>
                         </div>
+                    
+                    </div>
+
+                    <div className="details">
+                        <p className="date">Data de lançamento: {d.release_date}</p>
+                        <p className="date">Duração: {d.runtime}min</p>
+                        <p className="date">Orçamento {d.budget}</p>
+
                     </div>
                     <p >{d.overview}</p>
                     <Video link={link} />

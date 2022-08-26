@@ -7,7 +7,6 @@ export const Container = styled.div`
 
     h1 {
         font-size: 25px;
-        color: rgb(72,113,107);
     }
 
     li {
@@ -17,12 +16,11 @@ export const Container = styled.div`
     }
 
     span {
-        color: rgb(72,113,107);
         margin-top: 2rem;
     }
 
     span:hover {
-        color: white;
+        color: blue;
     }
 
     @media screen and (max-width: 400px){

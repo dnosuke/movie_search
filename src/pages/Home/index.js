@@ -109,7 +109,6 @@ const Home2 = () => {
         <C.Container>
             <Navbar />
             <div className="content">
-                <LeftMenu />
 
                 <C.Filmes>
 
@@ -233,7 +232,6 @@ const Home2 = () => {
                 </C.Filmes>
                 
                 <C.RightMenu>
-                <RightMenu data={topRated} title={'Top Rated'} />
                 </C.RightMenu>
             </div>
             <Footer />
